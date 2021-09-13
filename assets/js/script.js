@@ -7,11 +7,18 @@ var tasksToDoEl = document.querySelector("#tasks-to-do");
 // console.log(buttonEl);
 // buttonEl.addEventListener("click", function() {
 var taskFormHandler = function (event) {   //ORIGINAL HANDLER
+   
     // console.log(event);
     event.preventDefault();
     var taskNameInput = document.querySelector("input[name='task-name']").value;
     var taskTypeInput = document.querySelector("select[name='task-type']").value;
 
+
+    if (!taskNameInput || !taskTypeInput) {
+        alert("You need to fill out the task form!");
+        return false;
+    }
+    formEl.reset();
     //package up data as an obj
     var taskDataObj = {
         name: taskNameInput,
@@ -30,7 +37,7 @@ var taskFormHandler = function (event) {   //ORIGINAL HANDLER
     var listItemEl = document.createElement("li"); //create list item
     listItemEl.className = "task-item";
 
-    
+
     //CREATE DIV TO HOLD TASK INFO AND ADD TO LIST ITEM
     var taskInfoEl = document.createElement("div");
     // give it a class name?
